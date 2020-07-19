@@ -2,9 +2,22 @@ import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 import { CardText,Card, CardBody } from 'reactstrap'
 import {useParams} from 'react-router-dom'
+import MetaTags from 'react-meta-tags';
+
 function DetailComponent(props) {
-    let slug = useParams()
+    let slug = props.match.params.slug
     const [question, setquestion] = useState([])
+    const [questione, setquestione] = useState([])
+    const [industry,setIndustry] = useState([])
+
+    useEffect(() => {
+        axios
+        .get(`https://abkumbhar.pythonanywhere.com/industry/${slug}/`)
+        .then((res)=> {
+            setIndustry(res.data)
+        })
+        
+    }, [slug])
     useEffect(() => {
         axios
         .get(`https://abkumbhar.pythonanywhere.com/industry/${slug}/question/`)
@@ -12,16 +25,32 @@ function DetailComponent(props) {
             setquestion(res.data)
         })
         
-    }, [])
+    }, [slug])
+    useEffect(() => {
+        axios
+        .get(`https://abkumbhar.pythonanywhere.com/equipment/${slug}/question/`)
+        .then((res)=> {
+            setquestione(res.data)
+        })
+        
+    }, [slug])
+
 
     return (
         <div>
-            
+            <MetaTags>
+    <title>{industry.name}</title>
+            <meta name={industry.name} content={industry.name} />
+
+          </MetaTags>
+
             <Card>
                 <CardBody>
-                    <h3>
-                {props.location.indi ? <div>props.location.indi             <br/>    <h4>Reference URL (click next): <a href={props.location.indi.url} target=" "> {props.location.indi.adinfo} </a></h4> </div>: <div>Industry questions</div> }
-                </h3>
+                    <h1>
+                        {industry.name}
+                     </h1>
+                 <h1>Reference URL (click next): <a href={industry.url} target=" "> {industry.adinfo} </a> </h1>
+                
                 <br/>
 
                 </CardBody>
@@ -36,7 +65,7 @@ function DetailComponent(props) {
                     <tr>
                     
                              {
-                    props.location.indi.questioni.map((q) => 
+                    question.map((q) => 
                     
                     <div>
                     <li key={q.id}>
@@ -50,8 +79,8 @@ function DetailComponent(props) {
                     </li>
                     </div>
                     )} 
-                    {props.location.indi.questione &&
-                    props.location.indi.questione.map((q) => 
+                    {
+                    questione.map((q) => 
                     <div>
                       <li key={q.id}>
                       <tr>

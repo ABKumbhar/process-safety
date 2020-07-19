@@ -32,7 +32,7 @@ function CardComponent(props) {
               For more information, click on following link to know more information
               <Button color="success" onClick= {handleClick}>
                 
-              <Link to ={{pathname:'/industry-question/' + props.ind.slug,indi : props.ind }}>
+              <Link to ={{pathname:'/industry-question/' + props.ind.slug }}>
                <div style={{color:"white"}}>Click to know more ...</div></Link>
               </Button>
               </CardFooter>
