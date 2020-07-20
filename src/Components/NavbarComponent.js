@@ -32,12 +32,12 @@ function NavbarComponent() {const [isOpen, setIsOpen] = useState(true);
             </NavItem>
 
             <NavItem>
-            <NavLink  href="/industry">
+            <NavLink  href="/#/industry">
               <span> Industry </span>
           </NavLink>
             </NavItem>
             <NavItem>
-            <NavLink className="nav-link" href="/equipment">
+            <NavLink className="nav-link" href="/#/equipment">
               <span> Equipment </span>
           </NavLink>
             </NavItem>

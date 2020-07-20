@@ -4,7 +4,7 @@ import './App.css';
 import HeaderComponent from './Components/HeaderComponent';
 import IndustryComponent from './Components/IndustryComponent';
 import NavbarComponent from './Components/NavbarComponent'
-import {HashRouter, BrowserRouter as Router, Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import {HashRouter as Router, BrowserRouter , Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import HomeComponent from './Components/HomeComponent'
 import {Provider} from 'react-redux'
