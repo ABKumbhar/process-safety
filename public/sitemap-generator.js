@@ -8,7 +8,7 @@ require("babel-register")({
   function generateSitemap() {
       return (
         new Sitemap(router)
-            .build("https:/process-safety.netlify.app")
+            .build("https://process-safety.netlify.app")
             .save("./public/sitemap.xml")
       );
   }
