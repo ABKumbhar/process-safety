@@ -12,7 +12,7 @@ import {store} from './redux/store'
 import DetailComponent from './Components/DetailComponent'
 import Footer from './Components/Footer'
 import 'bootstrap/dist/css/bootstrap.css';
-
+import GateCard from './Components/GateCard';
 import EquipmentComponent from './Components/EquipmentComponent'
 import Sitemap from 'react-router-sitemap';
 
@@ -32,7 +32,7 @@ class App extends Component {
             <Route path='/industry' component={IndustryComponent}/>
             <Route path='/equipment' component={EquipmentComponent}/>
             <Route path='/industry-question/:slug' component={DetailComponent}/>
-
+            <Route path='/gate/:slug' component={GateCard}/>
           </Switch>
           
             </Router>

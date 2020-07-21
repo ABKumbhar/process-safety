@@ -1,9 +1,11 @@
 import React,{useState,useEffect} from 'react'
 import {Input,Form,Button,Jumbotron, FormGroup} from 'reactstrap'
+
 import CardComponent from './CardComponent'
 import axios from 'axios'
 import { FiSearch } from 'react-icons/fi';
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid, Container } from 'semantic-ui-react'
+import Gate from './Gate'
 function HomeComponent() {
     const [query,setQuery]=useState("helo")
     const [item,setItem] = useState([])
@@ -93,11 +95,13 @@ function HomeComponent() {
     
         </Form>
        <div>
-          
            {item.length ?  item.map(i => 
            <li key={i.id}>Searched results ... <CardComponent ind={i}/></li>
            ) : (<div >Search box is empty or result not found</div>)}
        </div>
+      <Container>
+       <Gate/>
+       </Container>
          <Jumbotron >
              <h1>Trending Today ....</h1>
              <br/>
