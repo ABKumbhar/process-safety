@@ -2,7 +2,7 @@ import React, {Fragment, useEffect, useState} from 'react';
 import {fetchIndustry} from '../redux'
 import 'bootstrap/dist/css/bootstrap.css';
 import {connect,useDispatch,useSelector} from 'react-redux';
-import { Form,Row, Col, Button, Card, CardBody, CardText, CardTitle, Spinner } from 'reactstrap';
+import {CardGroup,CardColumns,Form,Row, Col, Button, Card, CardBody, CardText, CardTitle, Spinner } from 'reactstrap';
 import CardComponent from './CardComponent'
 
 function IndustryComponent({IndustryData,fetchIndustry}) {
@@ -84,9 +84,11 @@ function IndustryComponent({IndustryData,fetchIndustry}) {
           //   <Col xl="4" lg="6">
           //   </Col>
           //   </Row>
-          <li key={ind.id}>
-          <CardComponent ind = {ind}/>
-          </li>
+          <div key={ind.id}>
+
+              <CardComponent ind = {ind}/> 
+            </div>
+
             )}
         </div>
       </div>

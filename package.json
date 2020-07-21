@@ -36,6 +36,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
+    "semantic-ui-react": "^0.88.2",
     "typescript": "^3.9.3"
   },
   "scripts": {
@@ -45,7 +46,6 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "sitemap": "babel-node ./src/Components/sitemap-generator.js"
-
   },
   "eslintConfig": {
     "extends": "react-app"

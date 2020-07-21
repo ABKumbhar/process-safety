@@ -3,7 +3,7 @@ import {Input,Form,Button,Jumbotron, FormGroup} from 'reactstrap'
 import CardComponent from './CardComponent'
 import axios from 'axios'
 import { FiSearch } from 'react-icons/fi';
-
+import { Grid, Image } from 'semantic-ui-react'
 function HomeComponent() {
     const [query,setQuery]=useState("helo")
     const [item,setItem] = useState([])
@@ -81,7 +81,7 @@ function HomeComponent() {
       }, []);
 
     return (
-        <div>
+        <div textAlign={{textAlign:"center"}}>
         <Form inline>
         <Input list="searching" placeholder="search here ..." onChange={e => setQueryi(e.target.value)}/>
         <datalist id="searching">
@@ -93,6 +93,7 @@ function HomeComponent() {
     
         </Form>
        <div>
+          
            {item.length ?  item.map(i => 
            <li key={i.id}>Searched results ... <CardComponent ind={i}/></li>
            ) : (<div >Search box is empty or result not found</div>)}
@@ -100,19 +101,25 @@ function HomeComponent() {
          <Jumbotron >
              <h1>Trending Today ....</h1>
              <br/>
-             <h4>Updates on new information on industry safety</h4>
+             <Grid columns={2} divided padded >
+                <Grid.Row>
+               <Grid.Column >  
+             <h4 style={{textAlign:"center"}}>  Updates on new information on industry safety  </h4>
+             <br/>
              {industry.length ? industry.map(i =>
            <li key={i.id}><CardComponent ind={i}/></li>
-           ) : (<div style={{textAlign:"center"}}>Nothing to new show today</div>)}
-           
-
-         <br/>
-            <h4> Updates on new information on equipment safety </h4>
-
+           ) : (<div style={{textAlign:"center"}}>Nothing to new show today....</div>)}
+           </Grid.Column>
+             
+         <Grid.Column  > 
+            <h4 style={{textAlign:"center"}}> Updates on new information on equipment safety </h4>
+            <br/>
              {equipment.length ? equipment.map(i =>
            <li key={i.id}><CardComponent ind={i}/></li>
-           ) : (<div style={{textAlign:"center"}}>Nothing to new show today</div>)}
-           
+           ) : (<div style={{textAlign:"center"}}>Nothing to new show today.....</div>)}
+           </Grid.Column>
+           </Grid.Row>
+           </Grid>
          </Jumbotron>
 
         </div>

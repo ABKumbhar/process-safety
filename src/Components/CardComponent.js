@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState} from 'react'
-import { Row, Col, Button, Card, CardBody, CardText, CardTitle, Spinner, CardFooter } from 'reactstrap';
+import { CardDeck, Row, Col, Button, Card, CardBody, CardText, CardTitle, Spinner, CardFooter } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import {Link} from 'react-router-dom';
 
@@ -14,12 +14,8 @@ function CardComponent(props) {
     return (
         <div>
 
-            <Row>
-            <Col xl="4" lg="6">
-            </Col>
-            <Col xl="4" lg="6">
-
-            <Card className="mb-5" outline color="info">
+         
+            <Card outline color="info" >
             <CardBody>
               <CardTitle className="card-title font-weight-bold font-size-lg">Industry/Equipment Name : {props.ind.name}</CardTitle>
               <CardText>
@@ -46,10 +42,7 @@ function CardComponent(props) {
               
               
             </Card >
-            </Col>
-            <Col xl="4" lg="6">
-            </Col>
-            </Row>
+            <br/>
         </div>
     )
 }
