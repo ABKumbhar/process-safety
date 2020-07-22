@@ -77,6 +77,7 @@ function Gate() {
         </List.Header>
 
             </List.Item>
+            <br/>
             </>
 
             ))
