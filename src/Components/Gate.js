@@ -3,7 +3,7 @@ import {List,Header,Icon} from 'semantic-ui-react'
 import {Card, CardHeader,CardFooter,CardBody,CardGroup,CardText, Button, Container} from 'reactstrap'
 import axios from 'axios';
 import {Link} from 'react-router-dom'
-import { FaEdit } from 'react-icons/fa';
+import { FaEdit , FaArrowCircleRight } from 'react-icons/fa';
 
 function Gate() {
     const [gatetrend, setgatetrend] = useState([])
@@ -73,7 +73,7 @@ function Gate() {
                 </CardFooter>
             </Card> */}
             <List.Item>
-            <List.Header> {i.name} <Link to= {"/gate/" + i.slug }> <Button>{i.carddetail}</Button> </Link>
+            <List.Header> {i.name} <Link to= {"/gate/" + i.slug }> <Button>{i.carddetail} <FaArrowCircleRight/></Button> </Link>
         </List.Header>
 
             </List.Item>
