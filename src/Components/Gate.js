@@ -1,11 +1,14 @@
 import React, {useState,useEffect} from 'react'
-import {List} from 'semantic-ui-react'
+import {List,Header,Icon} from 'semantic-ui-react'
 import {Card, CardHeader,CardFooter,CardBody,CardGroup,CardText, Button, Container} from 'reactstrap'
 import axios from 'axios';
 import {Link} from 'react-router-dom'
+import { FaEdit } from 'react-icons/fa';
+
 function Gate() {
     const [gatetrend, setgatetrend] = useState([])
     const [gate, setgate] = useState([])
+    const [loading,setloading] = useState(false)
     useEffect(() => {
         axios
         .get("https://abkumbhar.pythonanywhere.com/gate/trending/"
@@ -24,6 +27,8 @@ function Gate() {
         )
         .then((res) => {
             setgate(res.data)
+            setloading(true)
+
         })
        
         
@@ -34,9 +39,12 @@ function Gate() {
             <br/>
             <br/>
             <br/>
-            <Container>
-           <h3> GATE - 2020 IMPORTANT NEWS </h3>
-
+            <Header as='h3' >
+    
+    <Header.Subheader>
+    <FaEdit/> GATE - 2021 IMPORTANT NEWS     </Header.Subheader>
+  </Header>
+<br/>
             {/* {gate.map ((i) => 
             (<>
             <Card href={"/gate" + i.slug }>
@@ -51,7 +59,7 @@ function Gate() {
             )
             )} */}
             <List animated verticalAlign='middle'>
-            {gatetrend.map ((i) => 
+            { gatetrend.map ((i) => 
             (<>
             {/* <Card >
              <CardBody>
@@ -71,10 +79,10 @@ function Gate() {
             </List.Item>
             </>
 
-            )
-            )}
+            ))
+             }
             </List>
-            </Container>
+            <br/>
         </div>
     )
             }

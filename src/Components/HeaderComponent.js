@@ -5,6 +5,7 @@ import axios from 'axios'
 import { Jumbotron,Media } from 'reactstrap'
 import {Image} from 'react-bootstrap'
 import industry from './industry.jpeg'
+
 function HeaderComponent() {
     return (
     <div className="Header" style={{textAlign:"center"}} >

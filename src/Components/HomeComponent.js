@@ -1,9 +1,10 @@
 import React,{useState,useEffect} from 'react'
-import {Input,Form,Button,Jumbotron, FormGroup} from 'reactstrap'
-
+import {Input,Form,Button,Jumbotron, FormGroup,Col} from 'reactstrap'
 import CardComponent from './CardComponent'
 import axios from 'axios'
-import { FiSearch } from 'react-icons/fi';
+import { FiSearch, FiBell ,FiThermometer} from 'react-icons/fi';
+import { FaThermometerHalf , FaRegBuilding ,FaRegBell} from 'react-icons/fa';
+
 import { Grid, Container } from 'semantic-ui-react'
 import Gate from './Gate'
 function HomeComponent() {
@@ -84,7 +85,9 @@ function HomeComponent() {
 
     return (
         <div textAlign={{textAlign:"center"}}>
+           <Container>
         <Form inline>
+           <FormGroup>
         <Input list="searching" placeholder="search here ..." onChange={e => setQueryi(e.target.value)}/>
         <datalist id="searching">
             {query && industrysearch.map((i)=>{
@@ -92,23 +95,22 @@ function HomeComponent() {
             )}
         </datalist>
         <Button color="danger" onClick={e => setQuery(queryi)}>Submit <FiSearch/></Button>
-    
+        </FormGroup>
         </Form>
+        </Container>
        <div>
            {item.length ?  item.map(i => 
            <li key={i.id}>Searched results ... <CardComponent ind={i}/></li>
-           ) : (<div >Search box is empty or result not found</div>)}
+           ) : (<div > <Container>Search box is empty or result not found</Container></div>)}
        </div>
-      <Container>
        <Gate/>
-       </Container>
          <Jumbotron >
-             <h1>Trending Today ....</h1>
+             <h1>Trending Today ....  <FiBell/>  </h1>
              <br/>
              <Grid columns={2} divided padded >
                 <Grid.Row>
                <Grid.Column >  
-             <h4 style={{textAlign:"center"}}>  Updates on new information on industry safety  </h4>
+             <h4 style={{textAlign:"center"}}> <FaRegBuilding/> Updates on new information on industry safety  </h4>
              <br/>
              {industry.length ? industry.map(i =>
            <li key={i.id}><CardComponent ind={i}/></li>
@@ -116,7 +118,7 @@ function HomeComponent() {
            </Grid.Column>
              
          <Grid.Column  > 
-            <h4 style={{textAlign:"center"}}> Updates on new information on equipment safety </h4>
+            <h4 style={{textAlign:"center"}}> <FaThermometerHalf />Updates on new information on equipment safety </h4>
             <br/>
              {equipment.length ? equipment.map(i =>
            <li key={i.id}><CardComponent ind={i}/></li>
