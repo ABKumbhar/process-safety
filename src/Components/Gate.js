@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react'
 import {List,Header,Icon} from 'semantic-ui-react'
-import {Card, CardHeader,CardFooter,CardBody,CardGroup,CardText, Button, Container} from 'reactstrap'
+import {Card, CardHeader,CardFooter,CardBody,CardGroup,CardText, Button, Container,Spinner} from 'reactstrap'
 import axios from 'axios';
 import {Link} from 'react-router-dom'
 import { FaEdit , FaArrowCircleRight } from 'react-icons/fa';
@@ -8,7 +8,7 @@ import { FaEdit , FaArrowCircleRight } from 'react-icons/fa';
 function Gate() {
     const [gatetrend, setgatetrend] = useState([])
     const [gate, setgate] = useState([])
-    const [loading,setloading] = useState(false)
+    const [loading,setloading] = useState(true)
     useEffect(() => {
         axios
         .get("https://abkumbhar.pythonanywhere.com/gate/trending/"
@@ -27,7 +27,7 @@ function Gate() {
         )
         .then((res) => {
             setgate(res.data)
-            setloading(true)
+            setloading(false)
 
         })
        
@@ -59,7 +59,7 @@ function Gate() {
             )
             )} */}
             <List animated verticalAlign='middle'>
-            { gatetrend.map ((i) => 
+            {loading ? <Spinner/> : gatetrend.map ((i) => 
             (<>
             {/* <Card >
              <CardBody>

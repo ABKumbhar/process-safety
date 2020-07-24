@@ -1,11 +1,11 @@
 import React,{useState,useEffect} from 'react'
-import {Input,Form,Button,Jumbotron, FormGroup,Col} from 'reactstrap'
+import {Input,Form,Button,Jumbotron, FormGroup,Col,Spinner} from 'reactstrap'
 import CardComponent from './CardComponent'
 import axios from 'axios'
-import { FiSearch, FiBell ,FiThermometer} from 'react-icons/fi';
+import { FiSearch, FiBell ,FiThermometer , FiLoader} from 'react-icons/fi';
 import { FaThermometerHalf , FaRegBuilding ,FaRegBell} from 'react-icons/fa';
 
-import { Grid, Container } from 'semantic-ui-react'
+import { Grid, Container ,Loader, Dimmer } from 'semantic-ui-react'
 import Gate from './Gate'
 function HomeComponent() {
     const [query,setQuery]=useState("helo")
@@ -15,6 +15,7 @@ function HomeComponent() {
     const [industrysearch,setIndustrysearch] = useState([])
     const [equipment,setEquipment] = useState([])
      const [count, setcount] = useState(0)
+     const [loading,setloading] = useState(true)
     useEffect(() => {
         axios
         .get(`https://abkumbhar.pythonanywhere.com/list?search=${query}`)
@@ -36,9 +37,9 @@ function HomeComponent() {
         axios
         .get(`https://abkumbhar.pythonanywhere.com/industry/trending`)
         .then((res)=> 
-           {console.log(res)
-        setIndustry(res.data)}
-            
+           {console.log(res);
+        setIndustry(res.data);             setloading(false);
+      }
         )
         .catch((error)=>
         {console.log(error.message)
@@ -112,7 +113,7 @@ function HomeComponent() {
                <Grid.Column >  
              <h4 style={{textAlign:"center"}}> <FaRegBuilding/> Updates on new information on industry safety  </h4>
              <br/>
-             {industry.length ? industry.map(i =>
+             {loading ? <Spinner/>: industry.length ? industry.map(i =>
            <li key={i.id}><CardComponent ind={i}/></li>
            ) : (<div style={{textAlign:"center"}}>Nothing to new show today....</div>)}
            </Grid.Column>
@@ -120,7 +121,7 @@ function HomeComponent() {
          <Grid.Column  > 
             <h4 style={{textAlign:"center"}}> <FaThermometerHalf />Updates on new information on equipment safety </h4>
             <br/>
-             {equipment.length ? equipment.map(i =>
+             {loading ? <Spinner/> : equipment.length ? equipment.map(i =>
            <li key={i.id}><CardComponent ind={i}/></li>
            ) : (<div style={{textAlign:"center"}}>Nothing to new show today.....</div>)}
            </Grid.Column>
