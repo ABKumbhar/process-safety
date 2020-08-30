@@ -10,7 +10,7 @@ function HeaderComponent() {
     return (
     <div className="Header" style={{textAlign:"center"}} >
 
-        <Jumbotron style={{backgroundColor: "Orange"}}>
+        <Jumbotron style={{backgroundColor: "DodgerBlue"}}>
 
             <h1 style={{fontFamily:"Impact"}}> Process safety App</h1>
             <Image src={industry} roundedCircle fluid style={{textAlign:"center"}}/>

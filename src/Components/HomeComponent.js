@@ -104,7 +104,6 @@ function HomeComponent() {
            <li key={i.id}>Searched results ... <CardComponent ind={i}/></li>
            ) : (<div > <Container>Search box is empty or result not found</Container></div>)}
        </div>
-       <Gate/>
          <Jumbotron >
              <h1>Trending Today ....  <FiBell/>  </h1>
              <br/>
@@ -128,6 +127,7 @@ function HomeComponent() {
            </Grid.Row>
            </Grid>
          </Jumbotron>
+         <Gate/>
 
         </div>
         
